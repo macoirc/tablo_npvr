@@ -4,7 +4,7 @@
 import requests, json
 
 tabloIP = '192.168.12.34'
-npvrIP = '127.0.0.1'
+playlistIP = '127.0.0.1'
 
 try:
 	#get list of currently configured channels
@@ -21,6 +21,6 @@ for ch in channels:
 	ch_url = 'http://' + tabloIP + ':8885' + ch
 	ch_info = requests.get(ch_url).json()
 	channel = ch_info['channel']
-	f.write('#EXTINF:-1 tvg-id="{}" tvg-chno="{}.{}",{}\nhttp://{}/watch/{}\n\n'.format(channel['call_sign'],channel['major'],channel['minor'],channel['call_sign'],npvrIP,ch_info['object_id']))
+	f.write('#EXTINF:-1 tvg-id="{}" tvg-chno="{}.{}",{}\nhttp://{}/watch/{}\n\n'.format(channel['call_sign'],channel['major'],channel['minor'],channel['call_sign'],playlistIP,ch_info['object_id']))
 
 f.close()

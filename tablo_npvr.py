@@ -8,7 +8,8 @@ from urllib.parse import unquote, urlparse
 from pathlib import PurePosixPath
  
 PORT = 8050
-tabloIP = '127.0.0.1'
+playlistIP = '127.0.0.1'
+tabloIP = '192.168.12.34'
  
 class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -24,16 +25,16 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
         self.send_header('Location',chinfo['playlist_url'])
         self.end_headers()
       else:
-		message = "<html><body>Page Not Found.</body></html>"
-		self.send_response(404)
-		self.send_header('Content-Type', 'text/html')
-		self.send_header('Content-Length', len(message))
-		self.end_headers()
-		self.wfile.write( bytes(message, "utf-8" ))
-		self.close_connection = True
+        message = "<html><body>Page Not Found.</body></html>"
+        self.send_response(404)
+        self.send_header('Content-Type', 'text/html')
+        self.send_header('Content-Length', len(message))
+        self.end_headers()
+        self.wfile.write( bytes(message, "utf-8" ))
+        self.close_connection = True
  
 Handler = MyHttpRequestHandler
  
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
+with socketserver.TCPServer((playlistIP, PORT), Handler) as httpd:
   print("Http Server Serving at port", PORT)
   httpd.serve_forever()
