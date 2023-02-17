@@ -4,7 +4,7 @@ TabloTV M3U generator for use with NextPVR
 I wrote this for a few reasons...
 1. To practice my Python coding.
 2. I had just bought a Tablo device and wanted to explore it.
-3. I couldn't use the new Tablo with Plex and so I decided to move on to another in-home streaming platform.
+3. I couldn't use the new Tablo with Plex and so I decided to move on to another in-home streaming platform.  I landed on Jellyfin, with NextPVR to drive the Tablo and handle the DVR functionality.
 
 Much of the credit goes to [tmm1](https://github.com/tmm1) and his [tablo-for-channels](https://github.com/tmm1/tablo-for-channels) project.  But I wanted it in Python, not Go, and I didn't want to mess with Docker for such a lightweight use case.  So here we are.  I really made this for me, but if someone finds it helpful then rock on.  I've tested it on NextPVR v6.1.1.221106 and also with Jellyfin 10.8.9 but any platform that accepts M3U tuners should work with little or no modification.
 
